@@ -17,8 +17,7 @@ function AttendanceTable({
   }
 
   const getStatus = (workerId) =>
-    attendance.find((item) => item.worker === workerId)?.status || "present";
-
+  attendance.find((item) => item.worker === workerId)?.status || "";
   return (
     <>
       {/* ================= Desktop / Tablet ================= */}
@@ -59,28 +58,35 @@ function AttendanceTable({
                   <div className="flex justify-center gap-8">
                     <label className="flex cursor-pointer items-center gap-2 whitespace-nowrap">
                       <input
-                        type="radio"
-                        name={`attendance-${worker._id}`}
-                        checked={getStatus(worker._id) === "present"}
-                        onChange={() =>
-                          onStatusChange(worker._id, "present")
-                        }
-                      />
-
+  type="checkbox"
+  checked={getStatus(worker._id) === "present"}
+  onChange={() =>
+    onStatusChange(
+      worker._id,
+      getStatus(worker._id) === "present"
+        ? ""
+        : "present"
+    )
+  }
+/>
                       <span className="font-medium text-green-600">
                         Present
                       </span>
                     </label>
 
                     <label className="flex cursor-pointer items-center gap-2 whitespace-nowrap">
-                      <input
-                        type="radio"
-                        name={`attendance-${worker._id}`}
-                        checked={getStatus(worker._id) === "absent"}
-                        onChange={() =>
-                          onStatusChange(worker._id, "absent")
-                        }
-                      />
+                    <input
+  type="checkbox"
+  checked={getStatus(worker._id) === "absent"}
+  onChange={() =>
+    onStatusChange(
+      worker._id,
+      getStatus(worker._id) === "absent"
+        ? ""
+        : "absent"
+    )
+  }
+/>
 
                       <span className="font-medium text-red-600">
                         Absent
@@ -88,14 +94,18 @@ function AttendanceTable({
                     </label>
 
                     <label className="flex cursor-pointer items-center gap-2 whitespace-nowrap">
-                      <input
-                        type="radio"
-                        name={`attendance-${worker._id}`}
-                        checked={getStatus(worker._id) === "leave"}
-                        onChange={() =>
-                          onStatusChange(worker._id, "leave")
-                        }
-                      />
+<input
+  type="checkbox"
+  checked={getStatus(worker._id) === "leave"}
+  onChange={() =>
+    onStatusChange(
+      worker._id,
+      getStatus(worker._id) === "leave"
+        ? ""
+        : "leave"
+    )
+  }
+/>
 
                       <span className="font-medium text-orange-500">
                         Leave

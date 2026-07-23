@@ -14,7 +14,6 @@ function ClientModal({
     address: "",
     status: "active",
   });
-
   useEffect(() => {
     if (initialData) {
       setFormData({
@@ -42,10 +41,17 @@ function ClientModal({
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit(formData);
-  };
+ const handleSubmit = (e) => {
+  e.preventDefault();
+
+  onSubmit({
+    clientName: formData.name,
+    phoneNumber: formData.phone,
+    email: formData.email,
+    address: formData.address,
+    status: formData.status,
+  });
+};
 
   if (!open) return null;
 
